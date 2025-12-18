@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice Toko Selero Wong Kito</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <section class="input-form">
+        <h2>⚙️ Input Data Invoice</h2>
+
+        <label>Nomor Invoice (No Invoice):</label>
+        <input type="text" id="invoiceNum" placeholder="Masukkan nomor invoice">
+
+        <label>Tanggal Invoice (Tanggal):</label>
+        <input type="date" id="invoiceDate">
+
+        <label>Nama Klien (Kepada):</label>
+        <input type="text" id="clientName" placeholder="Masukkan nama pelanggan">
+
+        <hr>
+
+        <h3>Detail Item</h3>
+        <button id="addItemBtn">➕ Tambah Item</button>
+
+        <table id="itemTable">
+            <thead>
+                <tr>
+                    <th>Deskripsi</th>
+                    <th>Qty</th>
+                    <th>Harga Satuan</th>
+                    <th>Total</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <hr>
+
+        <button onclick="generatePDF()">⬇️ Unduh PDF</button>
+        <button onclick="window.print()">🖨️ Cetak Invoice</button>
+    </section>
+
+    <hr>
+
+    <section class="invoice-preview" id="invoicePreview">
+
+        <div class="invoice-header-top">
+            <span class="invoice-title">INVOICE</span>
+            <img src="logoKWU.jpeg" class="company-logo">
+        </div>
+
+        <div class="invoice-details-group">
+            <div class="recipient-info">
+                <p class="heading">KEPADA:</p>
+                <p class="data" id="displayClientName">-</p>
+            </div>
+
+            <div class="date-number-info">
+                <div class="info-line">
+                    <span class="heading">TANGGAL:</span>
+                    <span class="data" id="displayInvoiceDate">-</span>
+                </div>
+                <div class="info-line">
+                    <span class="heading">NO INVOICE:</span>
+                    <span class="data" id="displayInvoiceNum">-</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="item-display">
+            <thead>
+                <tr>
+                    <th>KETERANGAN</th>
+                    <th>HARGA</th>
+                    <th>JML</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="displayItemBody"></tbody>
+        </table>
+
+        <div class="bottom-section">
+            <div class="totals-area">
+                <div class="total-line">
+                    <span class="heading">SUB TOTAL:</span>
+                    <span id="subtotalDisplay">Rp0</span>
+                </div>
+                <div class="total-line grand-total">
+                    <span class="heading">TOTAL:</span>
+                    <span id="totalDisplay">Rp0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="thank-you">
+            TERIMAKASIH ATAS PEMBELIAN ANDA
+        </div>
+
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
